@@ -6,6 +6,7 @@ import ad.ya.restaurants.models.Ustensile;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
@@ -14,6 +15,8 @@ import java.util.List;
 
 
 @SpringBootApplication
+// Active la lecture du fichier properties pour la création d'objet basés sur ce dernier
+@ConfigurationPropertiesScan("ad.ya.restaurants.conf")
 //@Profile("dev") : Utilisable mais pau maintenable
 public class RestaurantsApplication {
 
