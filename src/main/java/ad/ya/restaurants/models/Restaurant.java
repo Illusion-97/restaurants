@@ -1,15 +1,18 @@
 package ad.ya.restaurants.models;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.Accessors;
+import org.springframework.stereotype.Component;
 
 @Getter
 @Setter
 @Accessors(chain = true)
+@ToString
+@RequiredArgsConstructor // crée un constructeur avec les attributs "final" ou annotés avec @NonNull
+@Component("FirstOne") // Bean nommé dans le contexte
 public class Restaurant {
     private String name;
-    private Cuisine cuisine;
+    private final Cuisine cuisine;
 
     public void preparerRepas() {
         cuisine.preparerPlat();

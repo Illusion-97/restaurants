@@ -2,7 +2,11 @@ package ad.ya.restaurants.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +14,9 @@ import java.util.List;
 @Getter
 @Setter
 @Accessors(chain = true)
+@ToString
+@Component
+/* @Component indique à spring qu'il doit insérer dans son contexte une instance de cette classe*/
 public class Cuisine {
     private List<Ustensile> ustensiles;
 
@@ -24,6 +31,13 @@ public class Cuisine {
                 new Ustensile().setName("spatule")
         );
     }*/
+
+    /*@Autowired indique à spring que les paramètres sont à récupérer dans son contexte (automatique sur un constructeur)*/
+    @Autowired
+    public Cuisine(Ustensile ustensile) {
+        System.out.println("\u001B[36mCuisine.Cuisine\u001B[0m");
+        System.out.println("ustensile = \u001B[31m" + ustensile + "\u001B[0m");
+    }
 
     public void preparerPlat() {
         ustensiles.forEach(Ustensile::use);
