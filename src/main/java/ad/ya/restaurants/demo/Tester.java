@@ -1,8 +1,7 @@
-package ad.ya.restaurants;
+package ad.ya.restaurants.demo;
 
 import ad.ya.restaurants.conf.MyProperties;
-import ad.ya.restaurants.models.Restaurant;
-import org.springframework.beans.factory.annotation.Autowired;
+import ad.ya.restaurants.demo.models.Restaurant;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.ApplicationContext;

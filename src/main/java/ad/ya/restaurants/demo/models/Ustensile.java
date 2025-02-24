@@ -1,4 +1,4 @@
-package ad.ya.restaurants.models;
+package ad.ya.restaurants.demo.models;
 
 import lombok.Getter;
 import lombok.Setter;
