@@ -3,11 +3,9 @@ package ad.ya.restaurants.users;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -33,6 +31,11 @@ public class UserServiceImpl implements UserService {
         return repository.findById(id).map(this::toDto);
     }
 
+    @Override
+    public void deleteById(long id) {
+        repository.deleteById(id);
+    }
+
 
     private UserDto toDto(User user) {
         return mapper.toDto(user);
@@ -40,10 +43,6 @@ public class UserServiceImpl implements UserService {
 
     private User toEntity(UserDto userDto) {
         return mapper.toEntity(userDto);
-    }
-
-    private List<UserDto> toDto(List<User> users) {
-        return users.stream().map(mapper::toDto).toList();
     }
 
 }
