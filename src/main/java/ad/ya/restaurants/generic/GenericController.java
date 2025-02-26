@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 public abstract class GenericController<D extends BaseDto, S extends GenericService<D>> {
-    private S service;
+    protected S service;
 
     @GetMapping
     public ResponseEntity<Page<D>> findAll(Pageable pageable) {

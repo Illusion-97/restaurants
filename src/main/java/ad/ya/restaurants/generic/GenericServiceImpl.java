@@ -14,8 +14,8 @@ public abstract class GenericServiceImpl<
         R extends JpaRepository<E,Long>,
         M extends GenericMapper<D,E>>
         implements GenericService<D> {
-    private final R repository;
-    private final M mapper;
+    protected final R repository;
+    protected final M mapper;
 
 
     @Override
@@ -39,11 +39,11 @@ public abstract class GenericServiceImpl<
     }
 
 
-    private D toDto(E entity) {
+    protected D toDto(E entity) {
         return mapper.toDto(entity);
     }
 
-    private E toEntity(D dto) {
+    protected E toEntity(D dto) {
         return mapper.toEntity(dto);
     }
 

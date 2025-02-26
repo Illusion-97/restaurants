@@ -1,16 +1,6 @@
 package ad.ya.restaurants.users;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import ad.ya.restaurants.generic.GenericService;
 
-import java.util.Optional;
-
-public interface UserService {
-    Page<UserDto> findAll(Pageable pageable);
-
-    UserDto saveOrUpdate(UserDto user);
-
-    Optional<UserDto> findById(long id);
-
-    void deleteById(long id);
+public interface UserService extends GenericService<UserDto> {
 }
