@@ -1,5 +1,6 @@
 package ad.ya.restaurants.cuisine;
 
+import ad.ya.restaurants.generic.BaseEntity;
 import ad.ya.restaurants.ustensiles.Ustensile;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -12,12 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class Cuisine {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
+public class Cuisine extends BaseEntity {
 
     @ManyToMany
     private List<Ustensile> ustensiles;

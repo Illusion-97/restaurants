@@ -1,48 +1,41 @@
 package ad.ya.restaurants.restaurants;
 
+import ad.ya.restaurants.files.FileService;
+import ad.ya.restaurants.generic.GenericServiceImpl;
+import ad.ya.restaurants.users.User;
+import ad.ya.restaurants.users.UserDto;
+import ad.ya.restaurants.users.UserMapper;
+import ad.ya.restaurants.users.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Optional;
 
 @Service
-@ToString
-@RequiredArgsConstructor
-public class RestaurantServiceImpl implements RestaurantService {
-    private final RestaurantRepository repository;
-    private final RestaurantMapper mapper;
-
-
-    @Override
-    public Page<RestaurantDto> findAll(Pageable pageable) {
-        return repository.findAll(pageable).map(this::toDto);
+public class RestaurantServiceImpl
+        extends GenericServiceImpl<
+        Restaurant,
+        RestaurantDto,
+        RestaurantRepository,
+        RestaurantMapper
+        >
+        implements RestaurantService {
+    private final FileService fileService;
+    public RestaurantServiceImpl(RestaurantRepository repository, RestaurantMapper mapper, FileService fileService) {
+        super(repository, mapper);
+        this.fileService = fileService;
     }
 
     @Override
-    public RestaurantDto saveOrUpdate(RestaurantDto restaurantDto) {
-        return toDto(repository.saveAndFlush(toEntity(restaurantDto)));
+    public void addCarte(long id, MultipartFile carte) {
+        repository.findById(id).ifPresent(restaurant -> saveCarte(carte, restaurant));
     }
 
-    @Override
-    public Optional<RestaurantDto> findById(long id) {
-        return repository.findById(id).map(this::toDto);
+    private Restaurant saveCarte(MultipartFile carte, Restaurant restaurant) {
+        return repository.save(restaurant.addCarte(fileService.saveFile(carte, "carte")));
     }
-
-    @Override
-    public void deleteById(long id) {
-        repository.deleteById(id);
-    }
-
-
-    private RestaurantDto toDto(Restaurant restaurant) {
-        return mapper.toDto(restaurant);
-    }
-
-    private Restaurant toEntity(RestaurantDto restaurantDto) {
-        return mapper.toEntity(restaurantDto);
-    }
-
 }

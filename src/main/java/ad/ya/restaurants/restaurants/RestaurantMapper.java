@@ -1,11 +1,9 @@
 package ad.ya.restaurants.restaurants;
 
+import ad.ya.restaurants.generic.GenericMapper;
 import org.mapstruct.Mapper;
 
 @Mapper
-public interface RestaurantMapper {
+public interface RestaurantMapper extends GenericMapper<RestaurantDto,Restaurant> {
 
-    RestaurantDto toDto(Restaurant restaurant);
-
-    Restaurant toEntity(RestaurantDto restaurantDto);
 }

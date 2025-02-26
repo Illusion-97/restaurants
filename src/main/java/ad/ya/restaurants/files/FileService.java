@@ -23,19 +23,14 @@ public class FileService {
     private Path storageFolder;
     private final FileRepository repository;
 
-    public void saveFile(MultipartFile file, String type) throws IOException {
+    @SneakyThrows
+    public File saveFile(MultipartFile file, String type){
         String filename = file.getOriginalFilename();
-        repository.save(new File().setNom(filename).setType(type));
         Files.copy(file.getInputStream(), storageFolder.resolve(filename), StandardCopyOption.REPLACE_EXISTING);
+        return repository.save(new File().setNom(filename).setType(type));
     }
 
-    public Optional<Resource> getFile(long id) throws MalformedURLException {
-        /*Optional<File> optionalFile = repository.findById(id);
-        if(optionalFile.isPresent()) {
-            return new UrlResource(storageFolder.resolve(optionalFile.get().getNom()).toUri());
-        }
-        return null;*/
-
+    public Optional<Resource> getFile(long id) {
         return repository.findById(id).map(this::fileToResource);
     }
 

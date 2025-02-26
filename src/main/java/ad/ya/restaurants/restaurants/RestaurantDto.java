@@ -1,5 +1,6 @@
 package ad.ya.restaurants.restaurants;
 
+import ad.ya.restaurants.generic.BaseDto;
 import lombok.Value;
 
 import java.io.Serializable;
@@ -9,10 +10,10 @@ import java.util.List;
  * DTO for {@link Restaurant}
  */
 @Value
-public class RestaurantDto implements Serializable {
-    long id;
+public class RestaurantDto  extends BaseDto implements Serializable {
     CuisineDto cuisine;
     String name;
+    List<FileDto> cartes;
 
     /**
      * DTO for {@link ad.ya.restaurants.cuisine.Cuisine}
@@ -30,5 +31,13 @@ public class RestaurantDto implements Serializable {
             long id;
             String name;
         }
+    }
+
+    /**
+     * DTO for {@link ad.ya.restaurants.files.File}
+     */
+    @Value
+    public static class FileDto implements Serializable {
+        long id;
     }
 }

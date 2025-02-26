@@ -1,11 +1,8 @@
 package ad.ya.restaurants.ustensiles;
 
+import ad.ya.restaurants.generic.GenericMapper;
 import org.mapstruct.Mapper;
 
 @Mapper
-public interface UstensileMapper {
-
-    UstensileDto toDto(Ustensile ustensile);
-
-    Ustensile toEntity(UstensileDto ustensileDto);
+public interface UstensileMapper extends GenericMapper<UstensileDto,Ustensile> {
 }

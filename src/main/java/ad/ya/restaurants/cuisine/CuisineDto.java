@@ -1,5 +1,6 @@
 package ad.ya.restaurants.cuisine;
 
+import ad.ya.restaurants.generic.BaseDto;
 import lombok.Value;
 
 import java.io.Serializable;
@@ -9,8 +10,7 @@ import java.util.List;
  * DTO for {@link Cuisine}
  */
 @Value
-public class CuisineDto implements Serializable {
-    long id;
+public class CuisineDto  extends BaseDto implements Serializable {
     List<UstensileDto> ustensiles;
 
     /**

@@ -18,12 +18,12 @@ public class FilesController {
     private final FileService service;
 
     @PostMapping(consumes = "multipart/form-data")
-    void saveFile(@RequestParam MultipartFile file, @RequestParam String type) throws IOException {
+    void saveFile(@RequestParam MultipartFile file, @RequestParam String type) {
         service.saveFile(file, type);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Resource> getFile(@PathVariable long id) throws MalformedURLException {
+    public ResponseEntity<Resource> getFile(@PathVariable long id) {
 
         return service.getFile(id)
                 .map(file -> ResponseEntity.ok()
