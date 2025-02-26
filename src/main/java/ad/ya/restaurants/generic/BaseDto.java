@@ -5,6 +5,6 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-public class BaseDto {
+public abstract class BaseDto {
     private long id;
 }

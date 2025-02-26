@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
-public class UserController<D extends BaseDto, S extends GenericService<D>> {
+public abstract class UserController<D extends BaseDto, S extends GenericService<D>> {
     private S service;
 
     @GetMapping

@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 @RequiredArgsConstructor
-public class GenericServiceImpl<
+public abstract class GenericServiceImpl<
         E extends BaseEntity,
         D extends BaseDto,
         R extends JpaRepository<E,Long>,
