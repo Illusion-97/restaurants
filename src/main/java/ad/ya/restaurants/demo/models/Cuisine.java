@@ -19,7 +19,7 @@ public class Cuisine {
     private List<Ustensile> ustensiles;
 
     /*public Cuisine() {
-        *//*ustensiles = new ArrayList<>();
+     *//*ustensiles = new ArrayList<>();
         Ustensile poele = new Ustensile().setName("poele");
         Ustensile spatule = new Ustensile().setName("spatule");
         ustensiles.add(poele);

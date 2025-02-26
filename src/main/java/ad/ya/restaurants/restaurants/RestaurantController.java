@@ -1,4 +1,4 @@
-package ad.ya.restaurants.users;
+package ad.ya.restaurants.restaurants;
 
 import lombok.AllArgsConstructor;
 import lombok.ToString;
@@ -11,27 +11,27 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @ToString
 @AllArgsConstructor
-@RequestMapping("users")
-public class UserController {
-    private UserService service;
+@RequestMapping("restaurants")
+public class RestaurantController {
+    private RestaurantService service;
 
     @GetMapping
-    public ResponseEntity<Page<UserDto>> findAll(Pageable pageable) {
-        Page<UserDto> page = service.findAll(pageable);
+    public ResponseEntity<Page<RestaurantDto>> findAll(Pageable pageable) {
+        Page<RestaurantDto> page = service.findAll(pageable);
         return page.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(page);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<UserDto> getById(@PathVariable long id) {
+    public ResponseEntity<RestaurantDto> getById(@PathVariable long id) {
         return ResponseEntity.of(service.findById(id));
     }
 
 
     @RequestMapping(method = {RequestMethod.POST, RequestMethod.PUT})
-    public ResponseEntity<UserDto> saveOrUpdate(@RequestBody UserDto userDto) {
+    public ResponseEntity<RestaurantDto> saveOrUpdate(@RequestBody RestaurantDto restaurantDto) {
         return ResponseEntity
-                .status(userDto.getId() == 0 ? HttpStatus.CREATED : HttpStatus.OK)
-                .body(service.saveOrUpdate(userDto));
+                .status(restaurantDto.getId() == 0 ? HttpStatus.CREATED : HttpStatus.OK)
+                .body(service.saveOrUpdate(restaurantDto));
     }
 
     @DeleteMapping("{id}")

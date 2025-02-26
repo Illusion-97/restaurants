@@ -7,7 +7,10 @@ import java.util.Optional;
 
 public interface UserService {
     Page<UserDto> findAll(Pageable pageable);
+
     UserDto saveOrUpdate(UserDto user);
+
     Optional<UserDto> findById(long id);
+
     void deleteById(long id);
 }

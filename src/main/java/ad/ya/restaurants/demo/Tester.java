@@ -11,11 +11,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class Tester {
 
+    MyProperties myProperties;
     /*@Value peut servir à affecter directement une valeur arbitraire ou présente dans application.properties*/
     @Value("${spring.application.name}")
     private String name;
-
-    MyProperties myProperties;
 
     public Tester(Restaurant restaurant, ApplicationContext context, @Value("Name") String name, MyProperties myProperties) {
         /*System.out.println("restaurant = \u001B[31m" + restaurant + "\u001B[0m");

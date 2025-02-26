@@ -5,7 +5,6 @@ import ad.ya.restaurants.demo.models.Cuisine;
 import ad.ya.restaurants.demo.models.Ustensile;
 import ad.ya.restaurants.users.UserController;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,11 +22,11 @@ import org.springframework.context.event.EventListener;
 @RequiredArgsConstructor
 public class RestaurantsApplication {
 
+    private final UserController controller;
+
     public static void main(String[] args) {
         SpringApplication.run(RestaurantsApplication.class, args);
     }
-
-    private final UserController controller;
 
     @Bean
     @Primary
@@ -41,7 +40,7 @@ public class RestaurantsApplication {
     public Ustensile poelle() {
         return new Ustensile().setName("poelle");
     }
-    
+
     @Bean
     public Cuisine c1(@Qualifier("poelle") Ustensile ustensile) {
         return new Cuisine(ustensile);

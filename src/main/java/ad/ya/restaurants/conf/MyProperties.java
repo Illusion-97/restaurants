@@ -19,6 +19,6 @@ public class MyProperties {
     private String name;
     private int age;
     private List<String> mails;
-    private Map<String,String> pseudo;
+    private Map<String, String> pseudo;
     private Adresse adresse;
 }
