@@ -1,5 +1,6 @@
 package ad.ya.restaurants.users;
 
+import ad.ya.restaurants.exception.MethodNotAllowedException;
 import ad.ya.restaurants.generic.GenericController;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,6 +23,6 @@ public class UserController extends GenericController<UserDto,UserService> {
 
     @Override
     public ResponseEntity<UserDto> saveOrUpdate(UserDto dto) {
-        throw new RuntimeException("Accès refusé. Utilisez la méthode d'inscription.");
+        throw new MethodNotAllowedException("Accès refusé. Utilisez la méthode d'inscription.");
     }
 }
